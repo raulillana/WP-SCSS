@@ -155,6 +155,7 @@ function wp_scss_needs_compiling() {
   global $wpscss_compiler;
   $needs_compiling = apply_filters('wp_scss_needs_compiling', $wpscss_compiler->needs_compiling());
   if ( $needs_compiling ) {
+    unlink(get_stylesheet_directory() .'/style.css');
     wp_scss_compile();
     wpscss_handle_errors();
   }
